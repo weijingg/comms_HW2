@@ -392,7 +392,8 @@ p <- ggplot() +
   geom_sf(data = countryall_withgeom,
           aes(fill = CustomLabel, 
               text = paste(Country,": ", GW, " GW", sep="")), # Add hover text
-          color = "transparent") +
+          color = ifelse(countryall_withgeom$Country == "Laos","#657060FF","transparent"),
+          lwd = 0.6) +
   facet_wrap(~decade, nrow = 1) +
   scale_fill_manual(values = c("#D6D6FF", "#B2B4F0", "#6B7ED4", "#4561BF","#003995"),
                     name = "Hydropower capacity") +
@@ -423,7 +424,7 @@ interactive_map <- ggplotly(p, tooltip = "text", height = 360, width = 900) %>%
 # Display interactive map
 interactive_map
 ```
-<font size="2.8"><span style="font-family: 'Open Sans', verdana, sans-serif;margin-top: 0;color:#000000;">Source: Ang et al. 2023. Hover cursor over countries to view hydropower capacity value in gigawatts.</span></font>
+<font size="2.8"><span style="font-family: 'Open Sans', verdana, sans-serif;margin-top: 0;color:#000000;">Source: Ang et al. 2023. Color of Laos corresponds to figures above. Hover cursor over countries to view hydropower capacity.</span></font>
 <br />
 <br />
 
